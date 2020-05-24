@@ -70,49 +70,109 @@
 					<div class="inner">
 						<section>
 							<form onsubmit="return false">
-								<div class="fields">
-									<div class="field half">
-										<label>Choose a structure:</label>
-										<select name="struct"  id="struct">
-											<option value="column">Column</option>
-											<option value="found_iso">Foundation - Isolated</option>
-											<option value="found_beam">Foundation - Beam</option>
-											<option value="tie">Tie Beam</option>
-										</select>
-									</div>
-									<div class="field half">
-										<label>Choose metrics:</label>
-										<select name="metrics" id="metrics">
-											<option value="inch">Inches</option>
-											<option value="feet">Feet</option>
-										</select> 
-									</div>
+								<div class="field half">
+									<label>Choose a structure:</label>
+									<select name="struct"  id="struct">
+										<option value="column">Column</option>
+										<option value="found_iso">Foundation - Isolated</option>
+										<option value="found_beam">Foundation - Beam</option>
+										<option value="tie">Tie Beam</option>
+									</select>
+								</div>
+								<div class="field half">
+									<label>Choose metrics:</label>
+									<select name="metrics" id="metrics">
+										<option value="inch">Inches</option>
+										<option value="feet">Feet</option>
+									</select> 
+								</div>
+								<div class="fields" id ="table1">
+									
 									<div class="field half">
 										<label for="name">Length:</label>
-										<input type="text" name="length" id="length" />
+										<input type="text" name="length1" id="length1" />
 									</div>
 									<div class="field half">
 										<label for="email">Breadth:</label>
-										<input type="text" name="breadth" id="breadth" />
+										<input type="text" name="breadth1" id="breadth1" />
 									</div>
 									<div class="field">
 										<label for="email">Diameter of Bar:</label>
-										<input type="text" name="diameter_of_bar" id="diameter_of_bar" />
+										<input type="text" name="diameter_of_bar1" id="diameter_of_bar1" />
 									</div>
 									<div class="field">
 										<label for="email">No. of Bar:</label>
-										<input type="text" name="no_of_bar" id="no_of_bar" />
+										<input type="text" name="no_of_bar1" id="no_of_bar1" />
 									</div>
 									<div class="field">
 										<label for="email">Height of Bar:</label>
-										<input type="text" name="height_of_bar" id="height_of_bar" />
+										<input type="text" name="height_of_bar1" id="height_of_bar1" />
 									</div>
-							
 								</div>
-								<ul class="actions">
+								<!-- <ul class="actions">
 									<li><button onclick="myFunction()" >Calculate</button></li>
 									<li><input type="reset" value="Clear" /></li>
+								</ul> -->
+								<button id ="button_for_2"onclick="show_table_2()">Add another column</button>
+
+								<div class="fields" id ="table_2"> 
+									<div class="field half">
+										<label for="name">Length:</label>
+										<input type="text" name="length2" id="length2" />
+									</div>
+									<div class="field half">
+										<label for="email">Breadth:</label>
+										<input type="text" name="breadth2" id="breadth2" />
+									</div>
+									<div class="field">
+										<label for="email">Diameter of Bar:</label>
+										<input type="text" name="diameter_of_bar2" id="diameter_of_bar2" />
+									</div>
+									<div class="field">
+										<label for="email">No. of Bar:</label>
+										<input type="text" name="no_of_bar2" id="no_of_bar2" />
+									</div>
+									<div class="field">
+										<label for="email">Height of Bar:</label>
+										<input type="text" name="height_of_bar2" id="height_of_bar2" />
+									</div>
+								</div>
+								<!-- <ul class="actions">
+									<li><button onclick="myFunction()" >Calculate</button></li>
+									<li><input type="reset" value="Clear" /></li>
+								</ul> -->
+								<button id = "button_for_3" onclick="show_table_3()">Add another column</button>
+
+
+								<div class="fields" id ="table_3">
+									<div class="field half">
+										<label for="name">Length:</label>
+										<input type="text" name="length3" id="length3" />
+									</div>
+									<div class="field half">
+										<label for="email">Breadth:</label>
+										<input type="text" name="breadth3" id="breadth3" />
+									</div>
+									<div class="field">
+										<label for="email">Diameter of Bar:</label>
+										<input type="text" name="diameter_of_bar3" id="diameter_of_bar3" />
+									</div>
+									<div class="field">
+										<label for="email">No. of Bar:</label>
+										<input type="text" name="no_of_bar3" id="no_of_bar3" />
+									</div>
+									<div class="field">
+										<label for="email">Height of Bar:</label>
+										<input type="text" name="height_of_bar3" id="height_of_bar3" />
+									</div>
+								</div>
+								<ul class="actions">
+									<li><button onclick="calculate()" >Calculate</button></li>
+									<li><input type="reset" value="Clear" /></li>
 								</ul>
+								<!-- <button onclick="show_hide_div()">Try it</button> -->
+
+
 							</form>
 						</section>
 						<section class="split">
@@ -123,18 +183,18 @@
 							</section>
 							<section>
 								<div class="contact-method">
-									<span class="icon solid alt fa-phone"></span>
+									<!-- <span class="icon solid alt fa-phone"></span>
 									<h3>Phone</h3>
-									<span>9851223635</span>
+									<span>9851223635</span> -->
 								</div>
 							</section>
 							<section>
 								<div class="contact-method">
-									<span class="icon solid alt fa-home"></span>
+									<!-- <span class="icon solid alt fa-home"></span>
 									<h3>Address</h3>
 									<span>Block11<br />
 									Tikapur, Kailali<br />
-									Nepal</span>
+									Nepal</span> -->
 								</div>
 							</section>
 						</section>
@@ -170,34 +230,90 @@
             <script src="assets/js/main.js"></script>
 
 
-            <script type="text/javascript">
-            function myFunction() {
-            var diameter_of_bar = parseFloat(document.getElementById("diameter_of_bar").value);
-            var no_of_bar = parseFloat(document.getElementById("no_of_bar").value);
-			var diameter_of_bar = parseFloat(document.getElementById("height_of_bar").value);
-			var result = diameter_of_bar*no_of_bar*diameter_of_bar;
-            document.getElementById('final_result').innerHTML = "The result is: "+result.toString();
-			alert(result);
-			again_1 = ask();
+			<script type="text/javascript">
 			
-			if(again_1==1){
+            function calculate() {
+
+			var result1=result2=result3=0;
+
+            var diameter_of_bar1 = parseFloat(document.getElementById("diameter_of_bar1").value);
+            var no_of_bar1 = parseFloat(document.getElementById("no_of_bar1").value);
+			var diameter_of_bar1 = parseFloat(document.getElementById("height_of_bar1").value);
+			var result1 = diameter_of_bar1*no_of_bar1*diameter_of_bar1;
+			alert(result1);
+			var table_2_active = document.getElementById("table_2");
+			if (table_2_active.style.display != "none"){
+				var diameter_of_bar2 = parseFloat(document.getElementById("diameter_of_bar2").value);
+				var no_of_bar2 = parseFloat(document.getElementById("no_of_bar2").value);
+				var diameter_of_bar2 = parseFloat(document.getElementById("height_of_bar2").value);
+				var result2 = diameter_of_bar2*no_of_bar2*diameter_of_bar2;
+				alert(result2);
 
 			};
 
+			var table_3_active = document.getElementById("table_3");
+			if (table_3_active.style.display != "none"){
+				var diameter_of_bar3 = parseFloat(document.getElementById("diameter_of_bar3").value);
+				var no_of_bar3 = parseFloat(document.getElementById("no_of_bar3").value);
+				var diameter_of_bar3 = parseFloat(document.getElementById("height_of_bar3").value);
+				var result3 = diameter_of_bar3*no_of_bar3*diameter_of_bar3;
+				alert(result3);
 
+			};
+			alert("out");
+			var result = result1+result2+result3;
+			document.getElementById('final_result').innerHTML = "The result is: "+result.toString();
+			}
+			            
 
+			// function ask() {
+			// 	var txt;
+			// 	if (confirm("Calculate for other size?")) {
+			// 		txt = 1;
+			// 	} else {
+			// 		txt = 0;
+			// 	}
+			// 	return txt
+			// 	}
+            // }
+			</script>
+			<script>
 
-			function ask() {
-				var txt;
-				if (confirm("Calculate for other size?")) {
-					txt = 1;
-				} else {
-					txt = 0;
+				function show_table_2() {
+				  var x = document.getElementById("table_2");
+				  show_button_3();
+				  if (x.style.display === "none") {
+					x.style.display = "block";
+				  } else {
+					x.style.display = "none";
+				  }
 				}
-				return txt
+
+				function show_table_3() {
+				  var x = document.getElementById("table_3");
+				  if (x.style.display === "none") {
+					x.style.display = "block";
+				  } else {
+					x.style.display = "none";
+				  }
 				}
-            }
-            </script>
+				function show_button_3() {
+				  var x = document.getElementById("button_for_3");
+				  if (x.style.display === "none") {
+					x.style.display = "block";
+				  } else {
+					x.style.display = "none";
+				  }
+				}
+					$( document ).ready(function() {
+						var x = document.getElementById("table_2");
+						x.style.display = "none";
+						var y = document.getElementById("table_3");
+						y.style.display = "none";
+						var z = document.getElementById("button_for_3");
+						z.style.display = "none";
+					});
+				</script>
 
 
 	</body>
