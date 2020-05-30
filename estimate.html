@@ -1,0 +1,232 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Estimation - Homaj Engineering Consultancy</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<!-- Note: The "styleN" class below should match that of the banner element. -->
+					<header id="header" class="alt style2">
+						<a href="index.html" class="logo"><img src="images/logo.jpg" alt="" /></a>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="index.html#one">Our Services</a></li>
+							<li><a href="accom.html">Accomplishments</a></li>
+							<li><a href="estimate.html">Calculation</a></li>
+							<li><a href="index.html#contact">Contact</a></li>
+						</ul>
+
+					</nav>
+					<div id="main">
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major">
+										<h2>Estimation </h2>
+									</header>
+									<p>Estimate using our calculator.</p>
+								</div>
+							</section>
+
+						<!-- Two -->
+                <!-- Contact -->
+                
+					<div class="inner">
+						<section>
+							<div class="row">
+								<div class="col-6 col-12-xsmall">
+									<label>Choose a structure:</label>
+									<select name="struct"  id="struct" class="col-12">
+										<option value="column">Column</option>
+										<option value="found_iso">Foundation - Isolated</option>
+										<option value="found_beam">Foundation - Beam</option>
+										<option value="tie">Tie Beam</option>
+									</select>
+								</div>
+								<div class="col-6 col-12-xsmall">
+									<label>Choose metrics:</label>
+									<select name="metrics" id="metrics">
+										<option value="mm">mm</option>
+										<option value="inch">inches</option>
+									</select> 
+								</div>
+							</div>
+
+							
+								
+							<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+							<style>
+							.extraColumnTemplate {
+								display:none;
+							}
+							</style>
+
+							<div class="extraColumnTemplate">
+								
+								<div class="row">
+									<div class="field half">
+										<label for="name">Length:</label>
+										<input type="text" name="length" id="length" />
+									</div>
+									<div class="field half">
+										<label for="email">Breadth:</label>
+										<input type="text" name="breadth" id="breadth" />
+									</div>
+									
+								</div>
+
+								<div class="row">
+									<div class="field half">
+										<label for="name">Diameter of Bar:</label>
+										<input type="text" name="bar_diameter" id="bar_diameter" />
+									</div>
+									<div class="field half">
+										<label for="email">No of Bar:</label>
+										<input type="text" name="bar_number" id="bar_number" />
+									</div>
+									<div class="field half">
+										<label for="email">Height of Bar:</label>
+										<input type="text" name="bar_height" id="bar_height" />
+									</div>
+									<div class="field half">
+										<div id="result" name="result"></div>
+										</div>
+									
+								</div>
+								
+							</div>
+
+
+
+							<div id="container"></div>
+
+							<a id="addRow"><i class="icon-plus-sign icon-white"></i> Add a column</p></a>
+
+							<ul class="actions">
+								<li><button onclick="calculate()" >Calculate</button></li>
+								<li><input type="reset" value="Clear" /></li>
+								<div id="final_result" name="final_result"></div>
+
+							</ul>
+
+						</section>
+						
+					</div>
+
+			
+					<script>
+						$(document).ready(function () {
+							var id_tag=1;
+							$('<div/>', {
+								'class' : 'extraContainer','id':id_tag, html: GetHtml()
+							}).appendTo('#container');
+							
+							$('#addRow').click(function () {
+								id_tag +=1;
+								$('<div/>', {
+									'class' : 'extraContainer','id':id_tag, html: GetHtml()
+							}).hide().appendTo('#container').slideDown('slow');
+								
+							});
+						})
+						function GetHtml()
+						{
+							var len = $('.extraContainer').length;
+							var $html = $('.extraColumnTemplate').clone();
+							$html.find('[name=length]')[0].id="length" + len;
+							$html.find('[name=breadth]')[0].id="breadth" + len;
+							$html.find('[name=bar_diameter]')[0].id="bar_diameter" + len;
+							$html.find('[name=bar_number]')[0].id="bar_number" + len;
+							$html.find('[name=bar_height]')[0].id="bar_height" + len;
+							$html.find('[name=result]')[0].id="result" + len;
+							return $html.html();    
+						}
+
+						function calculate(){
+							
+							var all_items = $('.extraContainer').length;
+							var length=[], breadth=[], bar_diameter=[], bar_number=[], bar_height=[], initial_calc=[];
+							var e = document.getElementById("metrics");
+							var metric = e.options[e.selectedIndex].value;
+							console.log(metric);
+							for (i = 0; i < all_items ; i++) {
+								if (metric=="inch"){
+									length[i] = $("div[id="+(i+1)+"]").find('input[name="length"]').val()*25.4;
+									breadth[i] = $("div[id="+(i+1)+"]").find('input[name="breadth"]').val()*25.4;
+									bar_diameter[i] = $("div[id="+(i+1)+"]").find('input[name="bar_diameter"]').val()*25.4;
+									bar_number[i] = $("div[id="+(i+1)+"]").find('input[name="bar_number"]').val()*25.4;
+									bar_height[i] = $("div[id="+(i+1)+"]").find('input[name="bar_height"]').val()*25.4;
+									}
+								else{
+									length[i] = $("div[id="+(i+1)+"]").find('input[name="length"]').val();
+									breadth[i] = $("div[id="+(i+1)+"]").find('input[name="breadth"]').val();
+									bar_diameter[i] = $("div[id="+(i+1)+"]").find('input[name="bar_diameter"]').val();
+									bar_number[i] = $("div[id="+(i+1)+"]").find('input[name="bar_number"]').val();
+									bar_height[i] = $("div[id="+(i+1)+"]").find('input[name="bar_height"]').val();									
+								}
+								
+								initial_calc[i]= (bar_number[i]*bar_height[i]*((bar_diameter[i]*bar_diameter[i])/162)*1.05);
+								document.getElementById("result"+i).innerHTML="Result is: "+parseFloat(initial_calc[i].toFixed(3))+" kgs.";
+
+							} 
+							console.log(breadth.length,"val",breadth[0]);
+							if(breadth.length == 1 && breadth[0]=='' ){
+								alert("Please input some value to calculate.");
+							}
+							else{
+								
+								// alert("lets calculate", initial_calc);
+								console.log(initial_calc)
+								var total_re = (initial_calc.reduce(function(a, b) { return a + b; }, 0));
+								console.log(total_re);
+								document.getElementById("final_result").innerHTML="Total weight of main bar is: "+parseFloat(total_re.toFixed(3))+" kgs.";
+								console.log("Executed");
+
+							}
+
+						}
+						</script>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="https://www.facebook.com/hectkp/" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+								
+							</ul>
+							<ul class="copyright">
+								<li>&copy; Homaj Engineering Consultancy</li>
+							</ul>
+						</div>
+					</footer>
+
+            </div>
+            
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+            <script src="assets/js/main.js"></script>
+
+	</body>
+</html>
