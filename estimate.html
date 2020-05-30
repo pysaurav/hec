@@ -107,19 +107,22 @@
 									<div class="field half">
 										<div id="result" name="result"></div>
 										</div>
+									
 								</div>
 								
 							</div>
 
 
 
-
 							<div id="container"></div>
+
 							<a id="addRow"><i class="icon-plus-sign icon-white"></i> Add a column</p></a>
 
 							<ul class="actions">
 								<li><button onclick="calculate()" >Calculate</button></li>
 								<li><input type="reset" value="Clear" /></li>
+								<div id="final_result" name="final_result"></div>
+
 							</ul>
 
 						</section>
@@ -176,8 +179,12 @@
 							else{
 								
 								// alert("lets calculate", initial_calc);
-								// console.log(initial_calc)
-								// var total_re = (initial_calc.reduce(function(a, b) { return a + b; }, 0))*1.05;
+								console.log(initial_calc)
+								var total_re = (initial_calc.reduce(function(a, b) { return a + b; }, 0));
+								console.log(total_re);
+								document.getElementById("final_result").innerHTML="Total weight of main bar is: "+parseFloat(total_re.toFixed(3))+" kgs.";
+								console.log("Executed");
+
 							}
 
 						}
