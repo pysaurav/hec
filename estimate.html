@@ -111,8 +111,14 @@
 
 
 							<div id="container"></div>
-							<a id="addRow"><i class="icon-plus-sign icon-white"></i> Add another family member</p></a>
-							<button onclick="showme()"></button>
+							<a id="addRow"><i class="icon-plus-sign icon-white"></i> Add a column</p></a>
+
+							<ul class="actions">
+								<li><button onclick="calculate()" >Calculate</button></li>
+								<li><input type="reset" value="Clear" /></li>
+							</ul>
+
+							<!-- <button onclick="showme()"></button> -->
 							<script>
 							$(document).ready(function () {
 								var id_tag=1;
@@ -137,14 +143,21 @@
 								return $html.html();    
 							}
 
-							function showme(){
+							function calculate(){
 								var all_items = $('.extraContainer').length;
 								var length=[], breadth=[];
 								for (i = 0; i < all_items ; i++) {
 									length[i] = $("div[id="+(i+1)+"]").find('input[name="length"]').val();
-									breadth[i] = $("div[id="+(i+1)+"]").find('input[name="length"]').val();
+									breadth[i] = $("div[id="+(i+1)+"]").find('input[name="breadth"]').val();
 									console.log("here",length,breadth);
 								} 
+								console.log(breadth.length,"val",breadth[0]);
+								if(breadth.length == 1 && breadth[0]=='' ){
+									alert("Please input some value to calculate!");
+								}
+								else{
+									alert("lets calculate");
+								}
 
 							}
 							</script>
