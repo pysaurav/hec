@@ -62,8 +62,8 @@
 								<div class="col-6 col-12-xsmall">
 									<label>Choose metrics:</label>
 									<select name="metrics" id="metrics">
-										<option value="inch">mm</option>
-										<option value="feet">inches</option>
+										<option value="mm">mm</option>
+										<option value="inch">inches</option>
 									</select> 
 								</div>
 							</div>
@@ -162,12 +162,25 @@
 							
 							var all_items = $('.extraContainer').length;
 							var length=[], breadth=[], bar_diameter=[], bar_number=[], bar_height=[], initial_calc=[];
+							var e = document.getElementById("metrics");
+							var metric = e.options[e.selectedIndex].value;
+							console.log(metric);
 							for (i = 0; i < all_items ; i++) {
-								length[i] = $("div[id="+(i+1)+"]").find('input[name="length"]').val();
-								breadth[i] = $("div[id="+(i+1)+"]").find('input[name="breadth"]').val();
-								bar_diameter[i] = $("div[id="+(i+1)+"]").find('input[name="bar_diameter"]').val();
-								bar_number[i] = $("div[id="+(i+1)+"]").find('input[name="bar_number"]').val();
-								bar_height[i] = $("div[id="+(i+1)+"]").find('input[name="bar_height"]').val();
+								if (metric=="inch"){
+									length[i] = $("div[id="+(i+1)+"]").find('input[name="length"]').val()*25.4;
+									breadth[i] = $("div[id="+(i+1)+"]").find('input[name="breadth"]').val()*25.4;
+									bar_diameter[i] = $("div[id="+(i+1)+"]").find('input[name="bar_diameter"]').val()*25.4;
+									bar_number[i] = $("div[id="+(i+1)+"]").find('input[name="bar_number"]').val()*25.4;
+									bar_height[i] = $("div[id="+(i+1)+"]").find('input[name="bar_height"]').val()*25.4;
+									}
+								else{
+									length[i] = $("div[id="+(i+1)+"]").find('input[name="length"]').val();
+									breadth[i] = $("div[id="+(i+1)+"]").find('input[name="breadth"]').val();
+									bar_diameter[i] = $("div[id="+(i+1)+"]").find('input[name="bar_diameter"]').val();
+									bar_number[i] = $("div[id="+(i+1)+"]").find('input[name="bar_number"]').val();
+									bar_height[i] = $("div[id="+(i+1)+"]").find('input[name="bar_height"]').val();									
+								}
+								
 								initial_calc[i]= (bar_number[i]*bar_height[i]*((bar_diameter[i]*bar_diameter[i])/162)*1.05);
 								document.getElementById("result"+i).innerHTML="Result is: "+parseFloat(initial_calc[i].toFixed(3))+" kgs.";
 
